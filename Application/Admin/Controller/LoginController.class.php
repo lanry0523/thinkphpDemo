@@ -32,7 +32,7 @@
 		
 		 session('uid',$admin['id']);
 		 session('username',$admin['username']);*/
-		 $test = new \Org\Util\UrlUtil();
+		 $test = new \Org\Util\http();
 		 $list1 = array("uname"=>"张三","pwd"=>"1234qwer","token"=>"xiaowei");
 		 $dataArray = 
 		 array("uname"=>"admin","passwd"=>"张三","token"=>"xiaowei");//register				
@@ -43,15 +43,15 @@
 		 
 		define('loginUrl','http://localhost:8080/yzt_service/testDemo/land');
 
-	 	$result = $test->http(loginUrl,$str,'POST');
+	 	/*$result = $test->http(loginUrl,$str,'POST');
 		
 		// echo json_encode($dataArray),'<br>';
 		 if (strcmp($result,'SUCCESS')==0) {
 		 	$this->success('登录成功',U("Login/homeList"),1);//redirect:""
 		 } else {
 		 	$this->error('登录失败返回登陆页.....',U('Login/index'));
-		 }		 
-		 
+		 }		*/
+         $this->display("homeList");//redirect:""
 	 }
  
 	 public function addUser(){
@@ -75,7 +75,7 @@
 	 }
 
 	 public function getString(){
-		$test = new \Org\Util\UrlUtil();	 	
+		$test = new \Org\Util\http();
 		define('selectUrl','http://localhost:8080/yzt_service/testDemo/getJDk');	 		 	
 	 	//$result = $test->http(selectUrl,$data,'POST');
 
