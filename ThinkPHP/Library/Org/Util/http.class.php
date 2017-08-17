@@ -6,7 +6,7 @@ namespace Org\Util;
  * Date: 2017/6/28  
  * Time: 13:24  
  */  
-class UrlUtil  
+class http
 {  
    /**
  * 发送HTTP请求方法
@@ -46,7 +46,7 @@ static function http($url, $params, $method = 'GET'){
             $opts[CURLOPT_POSTFIELDS] = $params;
             break;
         default:
-            throw new Exception('不支持的请求方式！');
+            throw new \Exception('不支持的请求方式！');
     }
     /* 初始化并执行curl请求 */
     $ch = curl_init();
@@ -54,7 +54,7 @@ static function http($url, $params, $method = 'GET'){
     $data  = curl_exec($ch);
     $error = curl_error($ch);
     curl_close($ch);
-    if($error) throw new Exception('请求发生错误：' . $error);
+    if($error) throw new \Exception('请求发生错误：' . $error);
     return  $data;
 }
 /************************************************************** 
