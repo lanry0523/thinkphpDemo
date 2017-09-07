@@ -22,6 +22,7 @@ define('BIND_MODULE','Admin');
 // 定义后台Admin目录
 define('APP_PATH','./Application/');
 
+define('APP_ROOT_PATH','./');
 
 /*缓存目录设置*/
 define('RUNTIME_PATH','./Runtime/');

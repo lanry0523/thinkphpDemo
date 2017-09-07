@@ -1,20 +1,19 @@
 <?php
 
-return array(
-/*
-    //'配置项'=>'配置值'
-    //划分项目前后台模块
-    'MODULE_ALLOW_LIST'      =>  array('Home','Admin'),
-    //设置系统默认访问路径
-    'DEFAULT_MODULE'        =>  'Admin',  // 默认模块
-    'DEFAULT_CONTROLLER'    =>  'Login', // 默认控制器名称
-    'DEFAULT_ACTION'        =>  'index', // 默认操作名称
-    //设置URL调度模式(默认)
-    //设置URL不区分链接大小写
-    'URL_CASE_INSENSITIVE'  =>  true,   // 默认false 表示URL区分大小写 true则表示不区分大小写
-    //设置模板替换标记
-    'TMPL_PARSE_STRING'        =>    array(
-        '__PUBLIC__' => '/think-demo/Application/Admin/View/Public'
-    ),
-	*/
-);
+$config = array();
+// 加载数据库中的配置与数据库配置
+if(file_exists(APP_ROOT_PATH.'public/db/db_config.php'))
+{
+    //定义DB
+    require APP_ROOT_PATH . 'public/db/db.php';
+    $dbcfg = require APP_ROOT_PATH . "public/db/db_config.php";
+    $db = new MySQLDB($dbcfg);
+    $GLOBALS['db'] = $db;
+    $config = array_merge($config,$dbcfg);
+}
+if(file_exists(APP_ROOT_PATH.'public/http/http.class.php')){
+    require APP_ROOT_PATH . 'public/http/http.class.php';
+    $http = new http();
+    $GLOBALS['http']= $http;
+}
+?>
